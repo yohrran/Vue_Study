@@ -28,3 +28,50 @@ App.vue를 HTML로 컴파일 후 index.html로 바뀐 후 렌더링 된다.
 
 HTML 속성 데이터 바인딩은
 :속성 = "데이터이름" (문법이 그렇다.)
+
+## 반복문
+
+      <a v-for="tag in 3" :key="tag">Home</a>
+
+      v-for"작명 in 몇 번 반복시킬 것인가" :key="작명"
+
+만약 배열상태로 반복문을 돌리고 싶다면
+data() {
+return {
+menu: ['Home', 'Shop', 'About'],
+};
+},
+
+      <a v-for="tag in menu" :key="tag">{{ tag }}</a>
+
+1. menu의 크기 만큼 반복시킨다.
+2. 그 해당하는 작명한 변수는 데이터 안의 자료가 된다.
+
+key를 쓰는 이유는
+
+- 반복문 쓸 때 꼭 써야한다.
+- 반복문 돌린 요소를 구분하기 위해 쓴다. 그래서 유니크한 숫자/문자를 넣어야한다.
+
+      <a v-for="(tag, i) in menu" :key="i">{{ tag }}</a>
+
+## 함수
+
+data가 끝나는 부근에 methods: {} 입력 후 그 안에 함수를 생성.
+
+    <button @click="increase">허위매물신고</button>
+
+methods: {
+increase() {
+this.count += 1;
+},
+},
+
+## 조건문
+
+      <div class="black-bg" v-if="modalState">
+
+      modalState: false,
+      //조건문 v-if로 이뤄진다.
+
+      <div v-else>두번째거</div>
+      //위 조건문 if가 거짓이라면 else문이 동작
