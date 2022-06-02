@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 class="discount">지금 결제하면 20% 할인</h4>
+    <h4 class="discount">지금 결제하면 {{ salesNumber }}% 할인</h4>
   </div>
 </template>
 
@@ -8,7 +8,14 @@
 export default {
   name: 'DisCount',
   data() {
-    return {};
+    return {
+      salesNumber: 30,
+    };
+  },
+  mounted() {
+    setInterval(() => {
+      this.salesNumber--;
+    }, 1000);
   },
 };
 </script>
